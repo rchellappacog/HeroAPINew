@@ -34,6 +34,9 @@ public class HeroDto {
         this.speed = i2;
     }
 
+    public HeroDto() {
+    }
+
     public String getImage() {
         return image;
     }
