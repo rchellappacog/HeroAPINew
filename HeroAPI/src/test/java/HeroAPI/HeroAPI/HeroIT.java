@@ -56,7 +56,7 @@ public class HeroIT {
                 .content(objectMapper.writeValueAsString(heroDto))
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isCreated());
-        mockMvc.perform(get("/heroes?name=real name1")
+        mockMvc.perform(get("/heroesByName?name=real name1")
                 .content(objectMapper.writeValueAsString(heroDto))
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().is(200)); //checking get status

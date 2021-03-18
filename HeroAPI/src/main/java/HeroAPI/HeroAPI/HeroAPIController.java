@@ -30,7 +30,7 @@ public class HeroAPIController {
         return this.heroList;
 
     }
-    @RequestMapping ("/heroes")
+    @RequestMapping ("/heroesByName")
     @ResponseStatus(HttpStatus.OK)
     public List<HeroDto> getHeroByName(@RequestParam(value="name") String name)
     {
