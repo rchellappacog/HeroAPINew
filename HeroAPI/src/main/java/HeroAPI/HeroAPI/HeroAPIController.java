@@ -32,14 +32,13 @@ public class HeroAPIController {
     }
     @RequestMapping ("/heroesByName")
     @ResponseStatus(HttpStatus.OK)
-    public List<HeroDto> getHeroByName(@RequestParam(value="name") String name)
-    {
+    public List<HeroDto> getHeroByName(@RequestParam(value="name") String name) throws Exception {
         //System.out.println("Hello");
         List<HeroDto> temp=null;
         for(HeroDto h:heroList){
             if(name.equals(h.getHeroName())){
                 temp.add(h);
-            }
+            }else throw new Exception("Invalid Hero name");
         }
         return temp;
 

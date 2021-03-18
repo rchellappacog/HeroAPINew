@@ -60,5 +60,10 @@ public class HeroIT {
                 .content(objectMapper.writeValueAsString(heroDto))
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().is(200)); //checking get status
+
+        mockMvc.perform(get("/heroesByName?name=real name")
+                .content(objectMapper.writeValueAsString(heroDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().is(200));
     };
 }
