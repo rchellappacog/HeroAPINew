@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -29,5 +30,15 @@ public class HeroIT {
                 .content(objectMapper.writeValueAsString(heroDto))
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isCreated());
+    };
+
+    @Test
+    public void viewHeroes() throws Exception {
+        HeroDto heroDto = new HeroDto("image1", "real name1", "hero name1", 185, 220, "special power1", "intelligence1",
+                "strength1", "power1", 120, "agility1", "description1", "story1");
+        mockMvc.perform(get("/heroes")
+                .content(objectMapper.writeValueAsString(heroDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().is(200));
     };
 }
