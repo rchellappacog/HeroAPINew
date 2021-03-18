@@ -1,10 +1,7 @@
 package HeroAPI.HeroAPI;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +20,14 @@ public class HeroAPIController {
     public void addHero(@RequestBody HeroDto heroDto){
         System.out.println("Hello");
         this.heroList.add(heroDto);
+
+    }
+
+    @RequestMapping ("/heroes")
+    @ResponseStatus(HttpStatus.OK)
+    public List<HeroDto> viewHeroes(){
+        //System.out.println("Hello");
+        return this.heroList;
 
     }
 }
