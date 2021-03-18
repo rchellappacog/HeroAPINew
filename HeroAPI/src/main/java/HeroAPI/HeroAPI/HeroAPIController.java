@@ -30,5 +30,19 @@ public class HeroAPIController {
         return this.heroList;
 
     }
+    @RequestMapping ("/heroes")
+    @ResponseStatus(HttpStatus.OK)
+    public List<HeroDto> getHeroByName(@RequestParam(value="name") String name)
+    {
+        //System.out.println("Hello");
+        List<HeroDto> temp=null;
+        for(HeroDto h:heroList){
+            if(name.equals(h.getHeroName())){
+                temp.add(h);
+            }
+        }
+        return temp;
+
+    }
 }
 

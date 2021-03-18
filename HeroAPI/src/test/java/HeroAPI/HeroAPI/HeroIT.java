@@ -46,4 +46,19 @@ public class HeroIT {
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().is(200)); //checking get status
     };
+
+    @Test
+    public void HeroByName() throws Exception {
+        HeroDto heroDto = new HeroDto("image1", "real name1", "hero name1", 185, 220, "special power1", "intelligence1",
+                "strength1", "power1", 120, "agility1", "description1", "story1");
+
+        mockMvc.perform(post("/hero")
+                .content(objectMapper.writeValueAsString(heroDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isCreated());
+        mockMvc.perform(get("/heroes?name=real name1")
+                .content(objectMapper.writeValueAsString(heroDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().is(200)); //checking get status
+    };
 }
